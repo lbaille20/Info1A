@@ -36,14 +36,12 @@ def init():
                             fontsize = 24, horizontalalignment='center', verticalalignment='center',
        bbox=dict(facecolor='red', alpha=0.5))
     
-    elements = [base, pilier, etais_pilier, bras_potence, etai_bras, corde,
+    elements_dessin = [base, pilier, etais_pilier, bras_potence, etai_bras, corde,
                  tete, tronc, brasdroit, brasgauche, jambedroite, jambegauche
                 ]
-    for k in range(len(elements)):
-        elements[k][0].set_visible(False)
-    
-    nombre_echecs = 0
-    return fig, ax, texte_affiche, elements, nombre_echecs
+    for k in range(len(elements_dessin)):
+        elements_dessin[k][0].set_visible(False)
+    return fig, ax, texte_affiche, elements_dessin
 
 def update_texte(fig, texte_affiche, new_text):
     #global texte_affiche
@@ -59,8 +57,6 @@ def update_fig(fig, elements, nombre_echecs):
     elements[nombre_echecs][0].set_visible(True)
     fig.canvas.draw()
     fig.canvas.flush_events()
-    nombre_echecs += 1
-    return nombre_echecs
 
 def update_final(fig, ax, mot, elements, nombre_echecs):
     texte_final = ax.text(-75, 5, '',
